@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+
+from protocol import CommandManager
+
+def main():
+    start = CommandManager()
+    return (0)
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Epicture1</string>
+
+    <!-- BOTTOM NAVIGATION VIEW -->
+    <string name="bottom_navigation_menu_home">Home</string>
+    <string name="bottom_navigation_menu_gallery">Gallery</string>
+    <string name="bottom_navigation_menu_upload">Upload</string>
+    <string name="bottom_navigation_menu_favorite">Favorite</string>
+    <string name="bottom_navigation_menu_search">Search</string>
+
+</resources>

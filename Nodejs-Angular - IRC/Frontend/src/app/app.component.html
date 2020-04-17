@@ -1,0 +1,39 @@
+<!-- Just an image -->
+<mdb-navbar SideClass="navbar navbar-dark indigo">
+    <mdb-navbar-brand>
+        <a class="navbar-brand" href="#">
+            <img src="https://www.sowe.fr/wp-content/uploads/2013/10/Pouet-Pouet-Logo.jpg" height="70" alt="">
+        </a>
+           
+        <!-- Button to open the modal login form -->
+<button class="loginPopup" onclick="document.getElementById('id01').style.display='block'">Connexion</button>
+<button class="loginPopup" routerLink="register">Inscription</button>
+<!-- The Modal -->
+<div id="id01" class="modal modalcenter ">
+  <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <img src="../assets/img/img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Entrer email" name="email" [(ngModel)]="email" required>
+
+      <label for="password"><b>Mot de passe</b></label>
+      <input type="password" placeholder="Entrer mot de passe" [(ngModel)]="password" name="password" required>
+
+      <button type="submit" (click)="userConnexion()" >Se connecter</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+    </div>
+  </form>
+</div>
+    </mdb-navbar-brand>
+</mdb-navbar>
+<router-outlet></router-outlet>

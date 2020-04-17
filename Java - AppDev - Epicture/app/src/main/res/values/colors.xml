@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="menu_color">#2E3035</color>
+    <color name="imgur_color">#171544</color>
+    <color name="icon_color_unselected">#FFFFFF</color>
+    <color name="icon_color_selected">#A2A1B4</color>
+</resources>

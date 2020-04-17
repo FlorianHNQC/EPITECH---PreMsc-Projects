@@ -1,0 +1,122 @@
+<html>
+
+<head>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class="messaging">
+		<div class="inbox_msg">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-3 inbox_people">
+						<div class="headind_srch">
+							<div class="row recent_heading">
+								<div class="col-7">
+									<div class="row-3"> 
+									<h4>Channels</h4><button class="btn btn-secondary AddChan" type="button" (click)="newChannel()">
+										<i class="fa fa-plus"></i>
+									</button>
+								</div>
+								</div>
+							</div>
+						</div>
+						<div class="inbox_chat">
+							<div class="chat_list active_chat">
+								<div class="chat_people">
+									<div class="chat_ib">
+										<ul class="nav nav-pills nav-fill"
+											*ngFor="let channel of channels;let i = index">
+											<li class="nav-item">
+												<div class="row">
+													<div class="col mb-1">
+														<button class="loginPopup" type="button" id="channels"
+															(click)="switchChannel(channel.name)"
+															value="{{channel.name}}">{{channel.name}}
+														</button>
+													</div>
+													<div *ngIf="canModify(channel)" >
+														<div class="btn-group" role="group">
+															<button id="editChannelID" class="btn btn-dark" type="button"
+																(click)="renameChannel(channel.name)">
+																<i class="fa fa-pencil"></i>
+															</button>
+															<button id="deleteChannelID" class="btn btn-dark" type="button"
+																(click)="deleteChannel(channel.name)"
+																value="{{channel.name}}">
+																<i class="fa fa-trash"></i>
+															</button>
+														</div>
+													</div>
+													<div *ngIf="!canModify(channel)" >
+														<div class="btn-group" role="group">
+															<button id="editChannelID" class="btn btn-dark" type="button"
+																(click)="renameChannel(channel.name)" disabled>
+																<i class="fa fa-pencil"></i>
+															</button>
+															<button id="deleteChannelID" class="btn btn-dark" type="button"
+																(click)="deleteChannel(channel.name)" disabled
+																value="{{channel.name}}">
+																<i class="fa fa-trash"></i>
+															</button>
+														</div>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col mesgs">
+						<div class="msg_history" onFocus = "javascript:blnScroll=false;" id="scrolled">
+							<div class="row">
+								<div class="col">
+									<h3>{{channel}}</h3>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col">
+									<div class="incoming_msg">
+										<div class="received_msg">
+											<ul class="received_withd_msg" *ngFor="let message of messages; let i = index">
+												<h6>{{message.created_by}}</h6>
+												<p>{{message.message}}</p>
+												<span class="time_date">{{message.created_at}}</span>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-1 connection_user ">
+						<ul *ngFor="let Client of Clients; let i = index">
+							<p>{{Client}}</p>
+						</ul>
+					</div>
+					<div class="row">
+						<div class="type_msg">
+							<div class="col">
+								<div class="input_msg_write">
+									<input type="text" class="write_msg" placeholder="Type a message"
+										[(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" />
+									<button class="msg_send_btn" type="button"><i class="fa fa-arrow-right"
+											aria-hidden="true" (click)="sendMessage()"></i>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://kit.fontawesome.com/a7b7395e9a.js" crossorigin="anonymous"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+
+</html>
