@@ -1,0 +1,105 @@
+
+
+<div _toolbar class="toolbar">
+  <div _titleDashboard>
+    <div _title mat-menu-item><span _testspan>Dash</span>Board</div>
+  </div>
+  <!-- DEBUT ANGULAR MATERIAL -->
+  <button _serviceButton mat-button [matMenuTriggerFor]="services">S'abonner à des services</button>
+  <mat-menu #services="matMenu">
+    <div *ngIf="layoutService.meteoAlrdySub == true; else meteoNotSub">
+      <mat-slide-toggle (click)="layoutService.subMeteo()" checked>Météo</mat-slide-toggle><br/>
+    </div>
+    <ng-template #meteoNotSub>
+      <div>
+        <mat-slide-toggle (click)="layoutService.subMeteo()">Météo</mat-slide-toggle><br/>
+      </div>
+    </ng-template>
+    <div *ngIf="layoutService.rssAlrdySub == true; else rssNotSub">
+      <mat-slide-toggle (click)="layoutService.subRss()" checked>Rss</mat-slide-toggle><br/>
+    </div>
+    <ng-template #rssNotSub>
+      <div>
+        <mat-slide-toggle (click)="layoutService.subRss()">Rss</mat-slide-toggle><br/>
+      </div>
+    </ng-template>
+    <div *ngIf="layoutService.gmapAlrdySub == true; else gmapNotSub">
+      <mat-slide-toggle (click)="layoutService.subgmap()" checked>Google maps</mat-slide-toggle><br/>
+    </div>
+    <ng-template #gmapNotSub>
+      <div>
+        <mat-slide-toggle (click)="layoutService.subgmap()">Google maps</mat-slide-toggle><br/>
+      </div>
+    </ng-template>
+    <div *ngIf="layoutService.todolistAlrdySub == true; else todolistNotSub">
+      <mat-slide-toggle (click)="layoutService.subTodolist()" checked>Todolist</mat-slide-toggle><br/>
+    </div>
+    <ng-template #todolistNotSub>
+      <div>
+        <mat-slide-toggle (click)="layoutService.subTodolist()">Todolist</mat-slide-toggle><br/>
+      </div>
+    </ng-template>
+  </mat-menu>
+
+  <div *ngFor="let service of layoutService.listeService">
+    <div mat-menu-item _service *ngIf="service.activate == 'yes'">
+      <button mat-button [matMenuTriggerFor]="belowMenu">{{service.name}}</button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <div *ngFor="let widget of layoutService.allWidget">
+          <button *ngIf="widget.service == service.name" mat-menu-item (click)="layoutService.addWidget(widget)">{{widget.name}}</button>
+        </div>
+      </mat-menu>
+    </div>
+  </div>
+  <!-- FIN ANGULAR MATERIAL -->
+  <div _logout mat-menu-item>
+    <button mat-button (click)="layoutService.logOut()">Se deconnecter</button>
+  </div>
+</div>
+<gridster _test2 [options]="options">
+  <gridster-item _test *ngFor="let item of layout" [item]="item">
+
+    <div _widget *ngIf="item.name == 'meteoByDay'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+        <app-meteo-by-day [itemId]="item.id" [meteoParams]="item.params"></app-meteo-by-day>
+    </div>
+
+    <div _widget *ngIf="item.name == 'meteoByDayBigger'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+        <app-meteo-by-day-bigger [itemIdBigger]="item.id" [meteoParamsBigger]="item.params"></app-meteo-by-day-bigger>
+    </div>
+
+    <div _widget *ngIf="item.name == 'jeuxvideoRss'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+      <app-jeuxvideo-rss [itemIdRss]="item.id" [paramsRss]="item.params"></app-jeuxvideo-rss>
+    </div>
+
+    <div _widget *ngIf="item.name == 'leMondeRss'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+      <app-le-monde-rss [itemIdMondeRss]="item.id" [paramsMondeRss]="item.params"></app-le-monde-rss>
+    </div>
+
+    <div _widget *ngIf="item.name == 'gmap'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+      <app-gmap></app-gmap>
+    </div>
+
+    <div _widget *ngIf="item.name == 'todolist'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+      <app-todolist></app-todolist>
+    </div>
+    
+  </gridster-item>
+</gridster>

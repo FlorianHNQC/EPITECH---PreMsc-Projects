@@ -1,0 +1,55 @@
+<div _logout>
+  <button (click)="layoutService.logOut()">Se deconnecter</button>
+</div>
+<div *ngIf="layoutService.navBar == 'serviceNavBar'">
+  <div class="toolbar">
+    <button (click)="layoutService.subMeteo()">Souscrire a meteo</button>
+    <button (click)="layoutService.subRss()">Souscrire a rss</button>
+    <button (click)="layoutService.subgmap()">Souscrire a Google maps</button>
+    <button (click)="layoutService.subTodolist()">Souscrire a todolist</button>
+    <button _serviceOrWidget (click)="layoutService.changeNavBar()">Mes widgets</button>
+  </div>
+</div>
+<div *ngIf="layoutService.navBar == 'widgetNavBar'">
+  <div class="toolbar">
+    <div *ngFor="let service of layoutService.listeService">
+      <div *ngFor="let widget of layoutService.allWidget">
+        <button *ngIf="service.activate == 'yes' && widget.service == service.name" (click)="layoutService.addWidget(widget)">{{widget.name}}</button>
+      </div>
+    </div>
+    <button _serviceOrWidget (click)="layoutService.changeNavBar()">Services</button>
+  </div>
+</div>
+<gridster [options]="options">
+  <gridster-item _test *ngFor="let item of layout" [item]="item">
+
+    <div _widget *ngIf="item.name == 'meteoByDay'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+      <app-meteo-by-day></app-meteo-by-day>
+    </div>
+
+    <div _widget *ngIf="item.name == 'rss'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+      <app-rss></app-rss>
+    </div>
+
+    <div _widget *ngIf="item.name == 'gmap'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+      <app-gmap></app-gmap>
+    </div>
+
+    <div _widget *ngIf="item.name == 'todolist'">
+      <button (click)="layoutService.deleteItem(item.id)">
+        Delete Item
+      </button>
+      <app-todolist></app-todolist>
+    </div>
+    
+  </gridster-item>
+</gridster>

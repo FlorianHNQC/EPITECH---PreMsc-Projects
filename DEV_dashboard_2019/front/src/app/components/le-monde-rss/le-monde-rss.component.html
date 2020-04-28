@@ -1,0 +1,20 @@
+<div _leMondeRss>
+    <div _top>
+        <button mat-button [matMenuTriggerFor]="menu">Votre feed : {{actuOrCinema}}</button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="changeMenu('actu')">Actualités</button>
+            <button mat-menu-item (click)="changeMenu('cinema')">Cinéma</button>
+        </mat-menu>
+    </div>
+    <div _bottom>
+        <div _ActualiteLeMonde>
+            <span _actuTitle>
+                {{data.feed.title}}
+            </span>
+            <div _itemRss *ngFor="let item of data.items">
+                <a _contenuRss href="{{item.link}}">{{item.title}}</a>
+            </div>
+        </div>
+    </div>
+</div>

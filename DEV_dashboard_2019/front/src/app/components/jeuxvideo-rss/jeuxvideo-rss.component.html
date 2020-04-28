@@ -1,0 +1,19 @@
+<div _jeuxvideoRss>
+    <div _top>
+        <button mat-button [matMenuTriggerFor]="menu">Votre feed : {{actuOrBestGame}}</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="changeMenu('actu')">Actualités</button>
+            <button mat-menu-item (click)="changeMenu('actuPc')">Actualités PC</button>
+        </mat-menu>
+    </div>
+    <div _bottom>
+        <div _ActualitePcJeuxVideoRss>
+            <span _actuTitle>
+                {{data.feed.title}}
+            </span>
+            <div _itemRss *ngFor="let item of data.items">
+                <a _contenuRss href="{{item.link}}">{{item.title}}</a>
+            </div>
+        </div>
+    </div>
+</div>

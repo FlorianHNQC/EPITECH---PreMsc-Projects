@@ -1,0 +1,63 @@
+:host {
+    .toolbar {
+      display: flex;
+    }
+    gridster {
+      display: flex;
+      height: calc(100vh - 115px);
+      flex-direction: column;
+    }
+  }
+
+[_test] {
+  width: 100%;
+  height: 100%;
+}
+
+[_widget] {
+  margin : 3px;
+  overflow : hidden;
+  height: calc(100%);
+  box-sizing: border-box;
+  z-index :100;
+}
+
+[_serviceButton] {
+  font-size : 110%;
+}
+
+[_service] {
+  padding : 0px;
+}
+
+[mat-button] {
+  color : #cdcdcd;
+}
+
+[_title] {
+  color : #3E863D;
+  font-size : 150%;
+  margin-right : 25px;
+}
+
+[_titleDashboard] [_testSpan] {
+  font-weight: bold;
+}
+
+[_toolBar] {
+  background-color: #040807;
+}
+
+[_test2] {
+  background-color: #4C5C68;
+}
+
+[_serviceOrWidget] {
+  position: absolute;
+  right : 0px;
+}
+
+[_logout] {
+  position : fixed;
+  right : 0px;
+}

@@ -1,0 +1,26 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <p>Bienvenue sur votre Dashboard</p>
+      </div>
+  
+      <!-- Login Form -->
+        <!-- <input type="text" [formControl]="login" class="fadeIn second"  placeholder="login"> -->
+        <input type="text" [formControl]="email" class="fadeIn third" placeholder="email">
+        <input type="text" [formControl]="password" id="password" class="fadeIn third" name="password" placeholder="password">
+        <input (click)="userLogin()" type="submit" class="fadeIn fourth" value="LOG IN">
+        <a routerLink="/register" routerLinkActive="active">s'enregistrer</a>
+      <!-- Remind Passowrd -->
+      <!-- <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div> -->
+  
+    </div>
+  </div>
