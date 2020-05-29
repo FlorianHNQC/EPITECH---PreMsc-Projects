@@ -1,0 +1,9 @@
+[Unit]
+Description=Poll web application
+
+[Service]
+User=root
+Environment
+WorkingDirectory=/root/result/
+ExecStart=npm start
+Restart=always

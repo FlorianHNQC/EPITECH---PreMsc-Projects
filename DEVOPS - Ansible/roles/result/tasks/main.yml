@@ -1,0 +1,36 @@
+- name: Install node & npm
+  apt:
+    name: ["nodejs","npm"]
+    update_cache: yes
+
+- name: Copy local result.tar to remote frontresult server
+  copy:
+    src: result.tar
+    dest: /root/result.tar
+
+- name: Extract result.tar
+  unarchive:
+    src: /root/result.tar
+    dest: /root
+    remote_src: yes
+
+- name: Install packages based on package.json
+  npm:
+    path: /root/result
+
+- name: Copy result.service to remote /etc/systemd/system/
+  copy:
+    src: systemd/result.service
+    dest: /etc/systemd/system/result.service
+
+- name: Add environment variable to result.service
+  lineinfile:
+    path: /etc/systemd/system/result.service
+    state: present
+    regexp: '^Environment'
+    line: Environment="PORT={{ port }}" "POSTGRESQL_HOST={{ postgresql_host }}" "POSTGRESQL_PORT={{ postgresql_port }}" "POSTGRESQL_USER={{ postgresql_user }}" "POSTGRESQL_PASSWORD={{ postgresql_password }}" "POSTGRESQL_DB={{ postgresql_db }}"
+
+- name: Ensure result service is running
+  systemd:
+    name: result
+    state: started

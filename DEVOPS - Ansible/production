@@ -1,0 +1,14 @@
+[frontpoll]
+poll ansible_host=188.166.17.140 ansible_connection=ssh ansible_user=root
+
+[frontresult]
+result ansible_host=188.166.28.132 ansible_connection=ssh ansible_user=root
+
+[dbredis]
+redis ansible_host=142.93.231.114 ansible_connection=ssh ansible_user=root
+
+[dbpostgres]
+postgres ansible_host=104.248.93.140 ansible_connection=ssh ansible_user=root
+
+[back]
+worker ansible_host=142.93.129.145 ansible_connection=ssh ansible_user=root

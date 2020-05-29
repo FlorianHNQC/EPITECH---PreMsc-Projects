@@ -1,0 +1,17 @@
+- name: Install redis
+  apt:
+    name: redis-server
+    update-cache: yes
+
+- name: Bind IP in redis.conf
+  lineinfile: 
+    dest: /etc/redis/redis.conf
+    regexp: '^bind '
+    line: 'bind 0.0.0.0'
+    state: present
+
+- name: Restart redis
+  service:
+    name: redis
+    state: restarted
+    enabled: yes

@@ -1,0 +1,9 @@
+[Unit]
+Description=Poll web application
+
+[Service]
+User=root
+Environment
+WorkingDirectory=/root/poll/
+ExecStart=flask run --host=0.0.0.0 --port=80
+Restart=always
